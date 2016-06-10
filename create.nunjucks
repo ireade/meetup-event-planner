@@ -1,0 +1,21 @@
+{% extends "default.nunjucks" %}
+
+{% block content %}
+<header class="page-header">
+	<h2 class="page-title">
+		<span class="bigger">Create an Event</span><br>
+		<span class="smaller">Fill in the form below to start planning your next event!</span>
+	</h2>
+</header>
+
+
+<section class="block">
+	<header class="block__header">
+		<h3 class="block__title">General Information</h3>
+	</header>
+
+	
+</section>
+
+
+{% endblock %}

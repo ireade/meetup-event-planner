@@ -1,0 +1,28 @@
+{
+	"events": [
+		{
+			"name": "Ire's 25th Birthday Parray!",
+			"type": "Birthday Party",
+			"host": "Ire Aderinokun",
+			"start_date": "1nd March",
+			"start_time": "2pm",
+			"end_date": "1nd March",
+			"end_time": "11pm",
+			"location": "58a Bourdillon Road",
+			"message": "Optional message here",
+			"guests": ["Tunwa", "Mode", "Ire"]
+		},
+		{
+			"name": "Ire's 25th Birthday Parray!",
+			"type": "Birthday Party",
+			"host": "Ire Aderinokun",
+			"start_date": "1nd March",
+			"start_time": "2pm",
+			"end_date": "1nd March",
+			"end_time": "11pm",
+			"location": "58a Bourdillon Road",
+			"message": null,
+			"guests": ["Tunwa", "Mode", "Ire"]
+		}
+	]
+}

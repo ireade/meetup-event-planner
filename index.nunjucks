@@ -1,0 +1,74 @@
+{% extends "default.nunjucks" %}
+
+{% block page_title %}Register{% endblock %}
+
+{% block content %}
+<header class="page-header">
+	<h2 class="page-title">
+		<span>Create, Manage</span><br>
+		<span class="bigger">&amp; Plan</span><br>
+		<span>Your Events</span> 
+	</h2>
+</header>
+
+
+<section class="block">
+	<header class="block__header">
+		<h3 class="block__title">Create your account</h3>
+	</header>
+
+	<form>
+		<div class="fieldset">
+			<div class="input-group">
+				<label for="full_name">
+					<span>What's your <em>full name</em>?</span>
+					<input type="text" id="full_name" required>
+				</label>
+			</div>
+
+			<div class="input-group">
+				<label for="email">
+					<span>What's your <em>email address</em>?</span>
+					<input type="email" id="email" required>
+				</label>
+			</div>
+
+			<div class="input-group">
+				<label for="password">
+					<span>Create a secure <em>password</em></span>
+					<input type="password" id="password" minlength="8" maxlength="100" required>
+
+					<ul class="input-requirements">
+						<li>Between 8 and 100 characters</li>
+					</ul>
+				</label>
+			</div>
+
+			<div class="input-group">
+				<label for="password_repeat">
+					<span>Repeat your password</span>
+					<input type="password" id="password_repeat" minlength="8" maxlength="100" required>
+				</label>
+			</div>
+
+		</div>
+
+		<br>
+		<div class="fieldset">
+			<legend class="h4-like">More about you (optional)</legend>
+
+			<div class="input-group">
+				<label for="job_title">
+					<span>What do you do?</span>
+					<input type="text" id="job_title">
+				</label>
+			</div>
+
+
+		</div>
+
+		<button type="submit" class="submit">Get Started!</button>
+
+	</form>
+</section>
+{% endblock %}

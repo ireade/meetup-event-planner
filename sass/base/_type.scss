@@ -1,0 +1,83 @@
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+    line-height: 1.6;
+    font-family: $font;
+    background-color: rgb(245,245,245);
+}
+
+
+h4,
+.h4-like {
+    font-weight: 700;
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+h5 {
+    font-weight: 700;
+}
+
+a {
+    text-decoration: none;
+    color: inherit; 
+}
+
+em {
+    font-weight: 700;
+}
+
+
+ul.input-requirements {
+    list-style: disc;
+    list-style-position: inside;
+    font-size: 1.4rem;
+    margin-top: 5px;
+    margin-left: 5px;
+    font-style: italic;
+}
+
+
+.site-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    display: inline-block;
+    padding-left: 10px;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+
+    span {
+        background-color: theme-opaque(0.6);
+        padding: 0 5px;
+    }
+    .bigger {
+        font-size: 3rem;
+    }
+    .smaller {
+        font-size: 2rem;
+    }
+}
+
+.site-nav {
+    font-size: 2.4rem;
+    line-height: 2;
+}
+
+.block__title {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.sr-only {
+    opacity: 0;
+    position: absolute;
+    clip: rect(1px 1px 1px 1px); /* syntax for IE6 & IE7 */
+    clip: rect(1px, 1px, 1px, 1px);
+}

@@ -1,0 +1,42 @@
+{% extends "default.nunjucks" %}
+
+{% block content %}
+<header class="page-header">
+	<h2 class="page-title">
+		<span class="bigger">My Events</span><br>
+	</h2>
+</header>
+
+{% for event in events %}
+<section class="block">
+	<header class="block__header">
+		<h3 class="block__title">{{event.name}}</h3>
+	</header>
+
+	<p>A {{event.type}}, Hosted by {{event.host}}</p>
+
+	<br>
+
+	<h5>Where?</h5>
+	<p>{{event.location}}</p>
+
+	<br>
+
+	<h5>When?</h5>
+	<p>From {{event.start_time}} on {{event.start_date}} till {{event.end_time}} on {{event.end_date}}</p>
+
+	<br>
+
+	<h5>Who's coming?</h5>
+	<p>{% for guest in event.guests %}{{guest}}, {% endfor %}</p>
+
+	<br>
+
+	{% if event.message %}
+	<h5>Note</h5>
+	<p>{{event.message}}</p>
+	{% endif %}
+</section>
+{% endfor %}
+
+{% endblock %}
