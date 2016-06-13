@@ -84,6 +84,8 @@ CustomValidation.prototype = {
 			if (requirementElement) {
 				if (!isInvalid) {
 					requirementElement.classList.add('valid');
+				} else {
+					requirementElement.classList.remove('valid');
 				}
 			} // end if requirementElement
 
