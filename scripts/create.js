@@ -33,3 +33,52 @@ start_date_input.addEventListener('keyup', function() {
 start_date_input.addEventListener('click', function() {
 	setEndDate();
 });
+
+
+/* ----------------------------
+
+	CustomValidation - Create
+
+---------------------------- */
+
+
+var inputs = document.querySelectorAll('input, textarea');
+var totalReuqired = document.querySelectorAll('[required]');
+var progressBar = document.getElementsByClassName('progress-bar')[0];
+
+var checkProgress = function() {
+
+	var validRequired = 0;
+
+	for ( var i = 0; i < inputs.length; i++ ) {
+		if ( inputs[i].validity.valid ) {
+			validRequired++;
+		}
+	}
+
+	var percentage = Math.round( (validRequired / inputs.length) * 100);
+	percentage = percentage + '%';
+	progressBar.style.width = percentage;
+	progressBar.innerHTML = percentage;
+
+
+};
+
+checkProgress();
+
+for ( var i = 0; i < totalReuqired.length; i++ ) {
+	totalReuqired[i].addEventListener('change', function() {
+		checkProgress();
+	});
+}
+
+
+
+
+
+
+
+
+
+
+

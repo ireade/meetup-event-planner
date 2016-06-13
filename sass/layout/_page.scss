@@ -1,3 +1,29 @@
 .page-header {
 	margin-bottom: 30px;
 }
+
+
+/* */
+
+.progress-container {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 20px;
+	background-color: rgba(255,255,255,0.6);
+
+	.progress-bar {
+		position: absolute;
+		top: 0;
+		height: 100%;
+		left: 0;
+		background-color: #2ecc71;
+		text-align: right;
+	    padding-right: 10px;
+	    font-size: 1.4rem;
+	    font-weight: 700;
+
+		transition: width 1s;
+	}
+}
