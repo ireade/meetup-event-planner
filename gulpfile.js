@@ -56,7 +56,7 @@ gulp.task('css', function() {
 			sass({ outputStyle: 'expanded' }) // compressed
 			.on('error', gutil.log)
 		)
-		.pipe(gulp.dest('dist/assets/css'));
+		.pipe(gulp.dest('dest/assets/css'));
 });
 
 
@@ -64,30 +64,17 @@ gulp.task('css', function() {
 /* *************
 	JS
 ************* */
-
-var concat = require('gulp-concat');
-var uglify = require('gulp-uglifyjs');
-
-var babel = require('gulp-babel');
-
+var uglify = require('gulp-uglify');
 var jsFiles = 'scripts/**/*.js';
 
 gulp.task('js', function() {
 	gulp.src(jsFiles)
-
-		// Babel
-		.pipe(
-			babel({ presets: ['es2015'] })
-			.on('error', gutil.log)
-		)
-		.pipe(concat('main.js'))
-		//.pipe(uglify())
-		.pipe(gulp.dest('dist/assets/js'));
+		.pipe(uglify())
+		.pipe(gulp.dest('dest/assets/js'));
 });
 
 
 // LINTING
-
 var eslint = require('gulp-eslint');
 
 gulp.task('lint', function() {
@@ -110,21 +97,53 @@ var data = require('gulp-data');
 
 var eventsData = require('./events.json');
 
+var moment = require('moment');
+var manageEnvironment = function(environment) {
+	environment.addFilter('date', function(rawDate) {
+		rawDate = rawDate.split('-');
+
+		var year = rawDate[0];
+		var month = rawDate[1];
+		var day = rawDate[2];
+
+		var m = moment().year(year).month(month).date(day);
+		m = m.calendar(null, {
+			sameElse: 'dddd Do MMMM YYYY'
+		});
+
+		return m;
+	});
+
+	environment.addFilter('time', function(rawTime) {
+		rawTime = rawTime.split(':');
+
+		var hours = rawTime[0];
+		var minutes = rawTime[1];
+
+		var m = moment().hours(hours).minutes(minutes);
+		m = m.format('h:mma');
+
+		return m;
+	});
+
+
+	environment.addGlobal('globalTitle', 'My global title');
+};
+
 gulp.task('nunjucks', function() {
 	return gulp.src('*.nunjucks')
 		.pipe(
-            data(function() {
-				return eventsData;
-            })
+            data(function() { return eventsData; })
             .on('error', gutil.log)
         )
 		.pipe(
 		nunjucksRender({
-			path: ['templates/']
+			path: ['templates/'],
+			manageEnv: manageEnvironment
 		})
 		.on('error', gutil.log)
 		)
-		.pipe(gulp.dest('dist/'));
+		.pipe(gulp.dest('dest/'));
 });
 
 
@@ -138,7 +157,7 @@ var browserSync = require('browser-sync');
 gulp.task('connectWithBrowserSync', function() {
 	browserSync.create();
 	browserSync.init({
-		server: './dist'
+		server: './dest'
 	});
 });
 
@@ -146,15 +165,13 @@ gulp.task('connectWithBrowserSync', function() {
 
 	
 
-
-
 /* *************
 	WATCH
 ************* */
 
 gulp.task('watch', function() {
 	gulp.watch(sassFiles,['css']).on('change', browserSync.reload); 
-	gulp.watch(jsFiles,['js', 'lint']).on('change', browserSync.reload);
+	gulp.watch(jsFiles,['js']).on('change', browserSync.reload);
 	gulp.watch(['**/*.nunjucks', 'events.json'], ['nunjucks']).on('change', browserSync.reload);
 });
 
@@ -164,6 +181,4 @@ gulp.task('watch', function() {
 	DEFAULT
 ************* */
 
-var activeTasks = ['connectWithBrowserSync', 'css', 'lint', 'nunjucks', 'watch'];
-
-gulp.task('default', activeTasks);
+gulp.task('default', ['connectWithBrowserSync', 'css', 'js', 'nunjucks', 'watch']);

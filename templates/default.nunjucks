@@ -17,7 +17,7 @@
                     <span class="sr-only">Open Navigation</span>
                     <i class="fa fa-bars"></i>
                 </a>
-                <h1 class="site-title">Meet-Up Event Planner</h1>
+                <h1 class="site-title"><a href="/">Meet-Up Event Planner</a></h1>
 
                 <nav class="site-nav">
                     <ul>
@@ -41,8 +41,11 @@
             </div>
         </main>
 
+        
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWbn2woYcKBa78EGto81shmbogj-9LfF0&amp;libraries=places&amp;callback=initAutocomplete" aync defer></script>
 
         <script src="assets/js/main.js"></script>
+        {% block scripts %}{% endblock %}
 
     </body>
 </html>

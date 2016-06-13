@@ -1,5 +1,7 @@
 {% extends "default.nunjucks" %}
 
+{% block page_title %}My Events{% endblock %}
+
 {% block content %}
 <header class="page-header">
 	<h2 class="page-title">
@@ -23,7 +25,7 @@
 	<br>
 
 	<h5>When?</h5>
-	<p>From {{event.start_time}} on {{event.start_date}} till {{event.end_time}} on {{event.end_date}}</p>
+	<p>From {{event.start_time | time}} on {{event.start_date | date}} till {{event.end_time | time}} on {{event.end_date | date}}</p>
 
 	<br>
 

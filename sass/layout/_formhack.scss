@@ -101,6 +101,10 @@ label {
 
 }
 
+.input-group--full {
+	max-width: 100%;
+}
+
 
 
 
@@ -312,6 +316,15 @@ form.show-errors input:valid {
 
 form.show-errors input:invalid {
 	border-color: red;
+}
+
+.input-requirements li.valid {
+	color: #2ecc71;
+}
+.input-requirements li.valid:after {
+	display: inline-block;
+	padding-left: 10px;
+	content: "\2713";
 }
 
 

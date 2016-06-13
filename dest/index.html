@@ -17,7 +17,7 @@
                     <span class="sr-only">Open Navigation</span>
                     <i class="fa fa-bars"></i>
                 </a>
-                <h1 class="site-title">Meet-Up Event Planner</h1>
+                <h1 class="site-title"><a href="/">Meet-Up Event Planner</a></h1>
 
                 <nav class="site-nav">
                     <ul>
@@ -49,57 +49,80 @@
 
 <section class="block">
 	<header class="block__header">
-		<h3 class="block__title">Create your account</h3>
+		<h3 class="block__title">Register an account to get started</h3>
 	</header>
 
 	<form>
+
 		<div class="fieldset">
 			<div class="input-group">
 				<label for="full_name">
-					<span>What's your <em>full name</em>?</span>
-					<input type="text" id="full_name" required>
+					<span>What's your <em>full name</em>? *</span>
+					<input type="text" id="full_name" required autofocus autocomplete="name" name="name">
 				</label>
 			</div>
 
 			<div class="input-group">
 				<label for="email">
-					<span>What's your <em>email address</em>?</span>
-					<input type="email" id="email" required>
+					<span>What's your <em>email address</em>? *</span>
+					<input type="email" id="email" placeholder="e.g. you@example.com" required autocomplete="email" name="email">
 				</label>
 			</div>
 
 			<div class="input-group">
 				<label for="password">
-					<span>Create a secure <em>password</em></span>
+					<span>Create a secure <em>password</em> *</span>
 					<input type="password" id="password" minlength="8" maxlength="100" required>
 
 					<ul class="input-requirements">
 						<li>Between 8 and 100 characters</li>
+						<li>At least one number</li>
+						<li>At least one lowercase letter</li>
+						<li>At least one uppercase letter</li>
 					</ul>
 				</label>
 			</div>
 
 			<div class="input-group">
 				<label for="password_repeat">
-					<span>Repeat your password</span>
+					<span><em>Repeat</em> your password *</span>
 					<input type="password" id="password_repeat" minlength="8" maxlength="100" required>
 				</label>
 			</div>
-
 		</div>
 
 		<br>
+
 		<div class="fieldset">
-			<legend class="h4-like">More about you (optional)</legend>
+			<legend class="h4-like">More about you (if you feel like sharing)</legend>
 
 			<div class="input-group">
 				<label for="job_title">
-					<span>What do you do?</span>
-					<input type="text" id="job_title">
+					<span>What's your job title?</span>
+					<input type="text" id="job_title" placeholder="e.g. Ninja">
 				</label>
 			</div>
 
+			<div class="input-group">
+				<label for="employer">
+					<span>Who's your employer?</span>
+					<input type="text" id="employer" placeholder="e.g. Kung Fu Panda">
+				</label>
+			</div>
 
+			<div class="input-group">
+				<label for="birthday">
+					<span>When's your birthday?</span>
+					<input type="date" id="birthday">
+				</label>
+			</div>
+
+			<div class="input-group">
+				<label for="location">
+					<span>Where do you live?</span>
+					<input type="text" id="location" onFocus="geolocate()" placeholder="Start typing to search for a location" name="address">
+				</label>
+			</div>
 		</div>
 
 		<button type="submit" class="submit">Get Started!</button>
@@ -110,8 +133,13 @@
             </div>
         </main>
 
+        
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWbn2woYcKBa78EGto81shmbogj-9LfF0&amp;libraries=places&amp;callback=initAutocomplete" aync defer></script>
 
         <script src="assets/js/main.js"></script>
+        
+<script src="assets/js/register.js"></script>
+
 
     </body>
 </html>

@@ -1,8 +1,43 @@
-{% extends "default.nunjucks" %}
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Create an Event | Meet-Up Event Planner</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="assets/css/main.css">
 
-{% block page_title %}Create an Event{% endblock %}
+    </head>
+    <body>
+        <header class="site-header">
+            <div class="wrapper">
+                <a href="/" class="nav-open">
+                    <span class="sr-only">Open Navigation</span>
+                    <i class="fa fa-bars"></i>
+                </a>
+                <h1 class="site-title"><a href="/">Meet-Up Event Planner</a></h1>
 
-{% block content %}
+                <nav class="site-nav">
+                    <ul>
+                        <li>
+                            <a href="/" class="nav-close">
+                                <span class="sr-only">Close Navigation</span>
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </li>
+                        <li><a href="/">Register</a></li>
+                        <li><a href="/create.html">Create an Event</a></li>
+                        <li><a href="/events.html">My Events</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main class="site-main">
+            <div class="wrapper">
+                
 <header class="page-header">
 	<h2 class="page-title">
 		<span class="bigger">Create an Event</span><br>
@@ -126,9 +161,17 @@
 
 
 </form>
-{% endblock %}
 
+            </div>
+        </main>
 
-{% block scripts %}
+        
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWbn2woYcKBa78EGto81shmbogj-9LfF0&amp;libraries=places&amp;callback=initAutocomplete" aync defer></script>
+
+        <script src="assets/js/main.js"></script>
+        
 <script src="assets/js/create.js"></script>
-{% endblock %}
+
+
+    </body>
+</html>

@@ -1,27 +1,26 @@
 {
 	"events": [
 		{
-			"name": "Ire's 25th Birthday Parray!",
+			"name": "Ire's Birthday Parray!",
 			"type": "Birthday Party",
 			"host": "Ire Aderinokun",
-			"start_date": "1nd March",
-			"start_time": "2pm",
-			"end_date": "1nd March",
-			"end_time": "11pm",
-			"location": "58a Bourdillon Road",
-			"message": "Optional message here",
+			"start_date": "2016-03-02",
+			"start_time": "14:00",
+			"end_date": "2016-03-02",
+			"end_time": "22:00",
+			"location": "1 Alexander Avenue, Lagos, Nigeria",
+			"message": "Turn up!",
 			"guests": ["Tunwa", "Mode", "Ire"]
 		},
 		{
-			"name": "Ire's 25th Birthday Parray!",
-			"type": "Birthday Party",
-			"host": "Ire Aderinokun",
-			"start_date": "1nd March",
-			"start_time": "2pm",
-			"end_date": "1nd March",
-			"end_time": "11pm",
-			"location": "58a Bourdillon Road",
-			"message": null,
+			"name": "JSConf",
+			"type": "Conference",
+			"host": "Udacity",
+			"start_date": "2016-06-13",
+			"start_time": "09:00",
+			"end_date": "2016-06-13",
+			"end_time": "17:00",
+			"location": "1 London Bridge, London, UK",
 			"guests": ["Tunwa", "Mode", "Ire"]
 		}
 	]
