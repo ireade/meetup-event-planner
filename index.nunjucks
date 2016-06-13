@@ -19,7 +19,7 @@
 
 	<form>
 
-		<div class="fieldset">
+		<div class="fieldset"><!-- The fieldset element doens't work with flexbox :( -->
 			<div class="input-group">
 				<label for="full_name">
 					<span>What's your <em>full name</em>? *</span>

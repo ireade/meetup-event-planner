@@ -52,7 +52,7 @@
 		<legend><h3 class="block__title">General Information</h3></legend>
 	</header>
 
-	<div class="fieldset">
+	<div class="fieldset"><!-- The fieldset element doens't work with flexbox :( -->
 		<div class="input-group">
 			<label for="name">
 				<span>What's the <em>name</em> of the event? *</span>
@@ -78,7 +78,7 @@
 				<input type="text" id="host" required list="host_list">
 				<small>This can be a person or an organization</small>
 
-				<!-- This datalist will be pre-populated with the user's name, their company (if given), and other hosts they have given from previous events-->
+				<!-- This datalist will be pre-populated with the user's name, their company (if given), and other hosts they have given from previous events -->
 				<datalist id="host_list">
 					<option value="Ire Aderinokun">
 					<option value="Udacity">
