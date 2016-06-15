@@ -1,1 +1,178 @@
-function setEndDate(){if(start_date_input.validity.valid){var t=start_date_input.value,e=t.split("T")[0],i=t.split("T")[1],n=i.split(":")[0],s=i.split(":")[1],u="22"==n?"0":parseInt(n)+2;10>u?u="0"+u:!0;var a=e+"T"+u+":"+s;end_date_input.value=a}}for(var requiredInputs=document.querySelectorAll("[required]"),i=0;i<requiredInputs.length;i++)requiredInputs[i].CustomValidation=new CustomValidation,requiredInputs[i].CustomValidation.validityChecks=[{isInvalid:function(t){return t.value.length<1},invalidityMessage:"This input is required"}];var event_end_input=document.getElementById("end");event_end_input&&(event_end_input.CustomValidation=new CustomValidation,event_end_input.CustomValidation.validityChecks=[{isInvalid:function(t){var e=event_end_input.value,i=e.split("T")[0],n=i.split("-")[0],s=i.split("-")[1],u=i.split("-")[2],a=e.split("T")[1],r=a.split(":")[0],d=a.split(":")[1],l=moment().year(n).month(s).date(u).hours(r).minutes(d),o=document.getElementById("start").value,p=o.split("T")[0],c=p.split("-")[0],v=p.split("-")[1],m=p.split("-")[2],h=o.split("T")[1],_=h.split(":")[0],y=h.split(":")[1],g=moment().year(c).month(v).date(m).hours(_).minutes(y);return!moment(l).isAfter(g)},invalidityMessage:"The end date needs to be after the start date"}]);var inputs=document.querySelectorAll("input"),submit=document.querySelector('button[type="submit"]');if(inputs)for(var i=0;i<inputs.length;i++){var input=inputs[i];input.CustomValidation&&(input.addEventListener("keyup",function(){input(this)}),input.addEventListener("blur",function(){this.CustomValidation.displayInvalidities(this)}))}submit&&submit.addEventListener("click",function(){document.querySelector("form").classList.add("show-errors");for(var t=0;t<inputs.length;t++)checkInput(inputs[t])});var start_date_input=document.getElementById("start"),end_date_input=document.getElementById("end");start_date_input.addEventListener("keyup",function(){setEndDate()}),start_date_input.addEventListener("click",function(){setEndDate()});var inputs=document.querySelectorAll("input, textarea"),progressBar=document.getElementsByClassName("progress-bar")[0],checkProgress=function(){for(var t=0,e=0;e<inputs.length;e++)inputs[e].validity.valid&&t++;var i=Math.round(t/inputs.length*100);i+="%",progressBar.style.width=i,progressBar.innerHTML=i};checkProgress();for(var i=0;i<inputs.length;i++)inputs[i].addEventListener("change",function(){checkProgress()});
+/* ----------------------------
+
+	CustomValidation - Create
+
+---------------------------- */
+//
+
+var requiredInputs = document.querySelectorAll('[required]');
+for ( var i = 0; i < requiredInputs.length; i++ ) {
+
+	requiredInputs[i].CustomValidation = new CustomValidation();
+	requiredInputs[i].CustomValidation.validityChecks = [
+		{
+			isInvalid: function(input) {
+				return input.value.length < 1;
+			},
+			invalidityMessage: 'This input is required'
+		}
+	];
+
+}
+
+
+
+//
+
+
+var event_end_input = document.getElementById('end');
+if ( event_end_input ) {
+	event_end_input.CustomValidation = new CustomValidation();
+	event_end_input.CustomValidation.validityChecks = [
+		{
+			isInvalid: function(input) {
+
+				var end = event_end_input.value;
+				var endDate = end.split('T')[0];
+				var endYear = endDate.split('-')[0];
+				var endMonth = endDate.split('-')[1];
+				var endDay = endDate.split('-')[2];
+				var endTime = end.split('T')[1];
+				var endHour = endTime.split(':')[0];
+				var endMin = endTime.split(':')[1];
+				var endMoment = moment().year(endYear).month(endMonth).date(endDay).hours(endHour).minutes(endMin);
+
+				var start = document.getElementById('start').value;
+				var startDate = start.split('T')[0];
+				var startYear = startDate.split('-')[0];
+				var startMonth = startDate.split('-')[1];
+				var startDay = startDate.split('-')[2];
+				var startTime = start.split('T')[1];
+				var startHour = startTime.split(':')[0];
+				var startMin = startTime.split(':')[1];
+				var startMoment = moment().year(startYear).month(startMonth).date(startDay).hours(startHour).minutes(startMin);
+
+				return !moment(endMoment).isAfter(startMoment);
+			},
+			invalidityMessage: 'The end date needs to be after the start date'
+		}
+	];
+}
+
+
+
+
+
+
+
+
+//	Event Listeners
+
+var inputs = document.querySelectorAll('input');
+var submit = document.querySelector('button[type="submit"]');
+
+if ( inputs ) {
+	for (var i = 0; i < inputs.length; i++) {
+
+		var input = inputs[i];
+
+		if ( input.CustomValidation ) {
+			input.addEventListener('keyup', function() {
+				input(this);
+			});
+			input.addEventListener('blur', function() {
+				this.CustomValidation.displayInvalidities(this);
+			});
+		}
+		
+	}
+}
+
+if ( submit ) {
+	submit.addEventListener('click', function() {
+		document.querySelector('form').classList.add('show-errors');
+		for (var i = 0; i < inputs.length; i++) {
+			checkInput(inputs[i]);
+		}
+	});
+}
+
+
+/* ----------------------------
+
+	Autofill End Date and Time
+
+---------------------------- */
+
+var start_date_input = document.getElementById('start');
+var end_date_input = document.getElementById('end');
+
+function setEndDate() {
+	if ( start_date_input.validity.valid ) {
+
+		var startDatetime = start_date_input.value;
+
+		var startDate = startDatetime.split('T')[0];
+		var startTime = startDatetime.split('T')[1];
+		var startHour = startTime.split(':')[0];
+		var startMin = startTime.split(':')[1];
+
+		var endHour = startHour == '22' ? '0' : parseInt(startHour) + 2;
+		endHour < 10 ? endHour = '0'+endHour : true;
+		var endTime = startDate + 'T' + endHour + ':' + startMin;
+
+		end_date_input.value = endTime;
+
+	}
+}
+
+start_date_input.addEventListener('keyup', function() {
+	setEndDate();
+});
+start_date_input.addEventListener('click', function() {
+	setEndDate();
+});
+
+
+/* ----------------------------
+
+	Progress Bar
+
+---------------------------- */
+
+var inputs = document.querySelectorAll('input, textarea');
+var progressBar = document.getElementsByClassName('progress-bar')[0];
+
+var checkProgress = function() {
+
+	var validRequired = 0;
+
+	for ( var i = 0; i < inputs.length; i++ ) {
+		if ( inputs[i].validity.valid ) { validRequired++; }
+	}
+
+	var percentage = Math.round( (validRequired / inputs.length) * 100);
+	percentage = percentage + '%';
+
+	progressBar.style.width = percentage;
+	progressBar.innerHTML = percentage;
+};
+
+checkProgress();
+
+for ( var i = 0; i < inputs.length; i++ ) {
+	inputs[i].addEventListener('change', function() {
+		checkProgress();
+	});
+}
+
+
+
+
+
+
+
+
+
+
+

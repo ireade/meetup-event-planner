@@ -46,7 +46,7 @@ var jsFiles = 'scripts/**/*.js';
 
 gulp.task('js', function() {
 	gulp.src(jsFiles)
-		.pipe(uglify())
+		//.pipe(uglify())
 		.pipe(gulp.dest('dest/assets/js'));
 });
 

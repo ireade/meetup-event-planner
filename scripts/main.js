@@ -74,9 +74,13 @@ CustomValidation.prototype = {
 	},
 	displayInvalidities: function(input) {
 
+		this.checkValidity(input);
+
 		if ( this.displayInvaliditiesOnBlur ) {
 
-			this.checkValidity(input);
+			if ( this.invalidities.length > 0 ) {
+				input.classList.add('invalid');
+			}
 
 			var invaliditiesArray = [];
 			for ( var i = 0; i < this.invalidities.length; i++ ) {
@@ -88,6 +92,12 @@ CustomValidation.prototype = {
 			var inputRequirements = document.querySelector('#'+inputID+' + ul');
 			inputRequirements.innerHTML = invaliditiesArray;
 
+			
+		} else {
+
+			if ( this.invalidities.length > 0 ) {
+				input.classList.add('invalid');
+			}
 		}
 
 	},

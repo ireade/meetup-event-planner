@@ -98,7 +98,7 @@ if ( inputs ) {
 
 		if ( input.CustomValidation ) {
 			input.addEventListener('keyup', function() {
-				input(this);
+				checkInput(this);
 			});
 			input.addEventListener('blur', function() {
 				this.CustomValidation.displayInvalidities(this);
