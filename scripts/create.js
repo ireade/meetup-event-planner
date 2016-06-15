@@ -23,6 +23,37 @@ for ( var i = 0; i < requiredInputs.length; i++ ) {
 
 
 //
+var event_start_input = document.getElementById('start');
+if ( event_start_input ) {
+	event_start_input.CustomValidation = new CustomValidation();
+	event_start_input.CustomValidation.validityChecks = [
+		{
+			isInvalid: function(input) {
+
+				var start = input.value;
+				var startDate = start.split('T')[0];
+				var startYear = startDate.split('-')[0];
+				var startMonth = startDate.split('-')[1];
+				var startDay = startDate.split('-')[2];
+				var startTime = start.split('T')[1];
+				var startHour = startTime.split(':')[0];
+				var startMin = startTime.split(':')[1];
+				var startMoment = moment().year(startYear).month(startMonth).date(startDay).hours(startHour).minutes(startMin);
+
+				var now = new Date();
+				var nowMonth = now.getUTCMonth() + 1;
+				var nowDay = now.getUTCDate();
+				var nowYear = now.getUTCFullYear();
+				var nonHour = now.getHours();
+				var nowMin = now.getMinutes();
+				var nowMoment = moment().year(nowYear).month(nowMonth).date(nowDay).hours(nonHour).minutes(nowMin);
+
+				return moment(nowMoment).isAfter( startMoment );
+			},
+			invalidityMessage: 'The start date cannot be before right now'
+		}
+	];
+}
 
 
 var event_end_input = document.getElementById('end');
@@ -52,9 +83,34 @@ if ( event_end_input ) {
 				var startMin = startTime.split(':')[1];
 				var startMoment = moment().year(startYear).month(startMonth).date(startDay).hours(startHour).minutes(startMin);
 
-				return !moment(endMoment).isAfter(startMoment);
+				return moment(startMoment).isAfter(endMoment);
 			},
 			invalidityMessage: 'The end date needs to be after the start date'
+		},
+		{
+			isInvalid: function(input) {
+
+				var start = input.value;
+				var startDate = start.split('T')[0];
+				var startYear = startDate.split('-')[0];
+				var startMonth = startDate.split('-')[1];
+				var startDay = startDate.split('-')[2];
+				var startTime = start.split('T')[1];
+				var startHour = startTime.split(':')[0];
+				var startMin = startTime.split(':')[1];
+				var startMoment = moment().year(startYear).month(startMonth).date(startDay).hours(startHour).minutes(startMin);
+
+				var now = new Date();
+				var nowMonth = now.getUTCMonth() + 1;
+				var nowDay = now.getUTCDate();
+				var nowYear = now.getUTCFullYear();
+				var nonHour = now.getHours();
+				var nowMin = now.getMinutes();
+				var nowMoment = moment().year(nowYear).month(nowMonth).date(nowDay).hours(nonHour).minutes(nowMin);
+
+				return moment(nowMoment).isAfter( startMoment );
+			},
+			invalidityMessage: 'The event date cannot be before right now'
 		}
 	];
 }
@@ -77,11 +133,14 @@ if ( inputs ) {
 		var input = inputs[i];
 
 		if ( input.CustomValidation ) {
+			input.addEventListener('change', function() {
+				checkInput(this);
+			});
 			input.addEventListener('keyup', function() {
-				input(this);
+				checkInput(this);
 			});
 			input.addEventListener('blur', function() {
-				this.CustomValidation.displayInvalidities(this);
+				checkInput(this);
 			});
 		}
 		

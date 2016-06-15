@@ -80,6 +80,8 @@ CustomValidation.prototype = {
 
 			if ( this.invalidities.length > 0 ) {
 				input.classList.add('invalid');
+			} else {
+				input.classList.remove('invalid');
 			}
 
 			var invaliditiesArray = [];
@@ -97,6 +99,8 @@ CustomValidation.prototype = {
 
 			if ( this.invalidities.length > 0 ) {
 				input.classList.add('invalid');
+			} else {
+				input.classList.remove('invalid');
 			}
 		}
 
@@ -128,7 +132,10 @@ CustomValidation.prototype = {
 
 function checkInput(input) {
 	if ( input.CustomValidation ) {
+		
 		input.CustomValidation.checkValidity(input);
+
+		input.CustomValidation.displayInvalidities(input);
 
 		if ( input.CustomValidation.invalidities.length == 0 && input.value != '' ) {
 			input.setCustomValidity('');

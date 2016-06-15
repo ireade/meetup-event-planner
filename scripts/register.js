@@ -97,11 +97,14 @@ if ( inputs ) {
 		var input = inputs[i];
 
 		if ( input.CustomValidation ) {
+			input.addEventListener('change', function() {
+				checkInput(this);
+			});
 			input.addEventListener('keyup', function() {
 				checkInput(this);
 			});
 			input.addEventListener('blur', function() {
-				this.CustomValidation.displayInvalidities(this);
+				checkInput(this);
 			});
 		}
 		
