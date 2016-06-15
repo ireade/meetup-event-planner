@@ -60,7 +60,7 @@ gulp.task('js', function() {
 var nunjucksRender = require('gulp-nunjucks-render');
 var data = require('gulp-data');
 
-var eventsData = require('./events.json');
+var eventsData = require('./data/events.json');
 
 // Nunjucks filters
 var moment = require('moment');
@@ -90,14 +90,14 @@ var manageEnvironment = function(environment) {
 };
 
 gulp.task('nunjucks', function() {
-	return gulp.src('*.nunjucks')
+	return gulp.src('templates/*.nunjucks')
 		.pipe(
             data(function() { return eventsData; })
             .on('error', gutil.log)
         )
 		.pipe(
 		nunjucksRender({
-			path: ['templates/'],
+			path: ['templates/layouts/'],
 			manageEnv: manageEnvironment
 		})
 		.on('error', gutil.log)

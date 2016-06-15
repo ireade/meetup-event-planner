@@ -57,6 +57,7 @@
 			<label for="name">
 				<span>What's the <em>name</em> of the event? *</span>
 				<input type="text" id="name" placeholder="My Super Duper Awesome Party" required autofocus autocomplete="name" name="name">
+				<ul class="input-requirements"></ul>
 			</label>
 		</div>
 
@@ -64,6 +65,7 @@
 			<label for="type">
 				<span>What <em>type</em> of event is it? *</span>
 				<input type="text" id="type" placeholder="e.g. Birthday Party" list="type_list" required>
+				<ul class="input-requirements"></ul>
 				<datalist id="type_list">
 					<option value="Birthday Party">
 					<option value="Conference Talk">
@@ -76,6 +78,7 @@
 			<label for="host">
 				<span>Who's the <em>host</em>? *</span>
 				<input type="text" id="host" required list="host_list">
+				<ul class="input-requirements"></ul>
 				<small>This can be a person or an organization</small>
 
 				<!-- This datalist will be pre-populated with the user's name, their company (if given), and other hosts they have given from previous events -->
@@ -100,6 +103,7 @@
 			<label for="start">
 				<span>When's the event <em>starting</em>? *</span>
 				<input type="datetime-local" id="start" required>
+				<ul class="input-requirements"></ul>
 			</label>
 		</div>
 
@@ -108,6 +112,7 @@
 			<label for="end">
 				<span>When's the event <em>ending</em>? *</span>
 				<input type="datetime-local" id="end" required>
+				<ul class="input-requirements"></ul>
 			</label>
 		</div>
 
@@ -115,6 +120,7 @@
 			<label for="location">
 				<span><em>Where's</em> the event happening? *</span>
 				<input type="text" id="location" onFocus="geolocate()" placeholder="Start typing to search for a location" required>
+				<ul class="input-requirements"></ul>
 			</label>
 		</div>
 
@@ -132,6 +138,7 @@
 			<label for="guests">
 				<span><em>Who</em> are the lucky invitees? *</span>
 				<textarea id="guests" cols="30" rows="3" placeholder="Me, Myself, I" required></textarea>
+				<ul class="input-requirements"></ul>
 				<small>Separate each invitee by a comma</small>
 			</label>
 		</div>
@@ -150,6 +157,7 @@
 			<label for="message">
 				<span>Leave a note for the guests?</span>
 				<textarea id="message" cols="30" rows="3" placeholder="e.g. Get ready to turn up!"></textarea>
+				<ul class="input-requirements"></ul>
 			</label>
 		</div>
 
@@ -173,6 +181,7 @@
 
         <script src="assets/js/main.js"></script>
         
+<script src="assets/js/moment.min.js"></script>
 <script src="assets/js/create.js"></script>
 
 

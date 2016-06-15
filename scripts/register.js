@@ -17,6 +17,7 @@ if ( full_name_input ) {
 	];
 }
 
+
 var email_input = document.getElementById('email');
 if ( email_input ) {
 	email_input.CustomValidation = new CustomValidation();
@@ -33,6 +34,7 @@ if ( email_input ) {
 var password_input = document.getElementById('password');
 if ( password_input ) {
 	password_input.CustomValidation = new CustomValidation();
+	password_input.CustomValidation.displayInvaliditiesOnBlur = false;
 	password_input.CustomValidation.validityChecks = [
 		{
 			isInvalid: function(input) {
@@ -91,9 +93,18 @@ var submit = document.querySelector('button[type="submit"]');
 
 if ( inputs ) {
 	for (var i = 0; i < inputs.length; i++) {
-		inputs[i].addEventListener('keyup', function() {
-			checkInput(this);
-		});
+
+		var input = inputs[i];
+
+		if ( input.CustomValidation ) {
+			input.addEventListener('keyup', function() {
+				input(this);
+			});
+			input.addEventListener('blur', function() {
+				this.CustomValidation.displayInvalidities(this);
+			});
+		}
+		
 	}
 }
 

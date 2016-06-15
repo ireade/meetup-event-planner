@@ -62,6 +62,7 @@ function geolocate() {
 function CustomValidation() {
 	this.invalidities = [];
 	this.validityChecks = [];
+	this.displayInvaliditiesOnBlur = true;
 }
 
 CustomValidation.prototype = {
@@ -71,7 +72,28 @@ CustomValidation.prototype = {
 	getInvalidities: function() {
 		return this.invalidities.join('. \n');
 	},
+	displayInvalidities: function(input) {
+
+		if ( this.displayInvaliditiesOnBlur ) {
+
+			this.checkValidity(input);
+
+			var invaliditiesArray = [];
+			for ( var i = 0; i < this.invalidities.length; i++ ) {
+				invaliditiesArray.push('<li>'+this.invalidities[i]+'</li>');
+			}
+			invaliditiesArray = invaliditiesArray.join();
+
+			var inputID = input.getAttribute('id');
+			var inputRequirements = document.querySelector('#'+inputID+' + ul');
+			inputRequirements.innerHTML = invaliditiesArray;
+
+		}
+
+	},
 	checkValidity: function(input) {
+
+		this.invalidities = [];
 
 		for ( var i = 0; i < this.validityChecks.length; i++ ) {
 
@@ -96,8 +118,6 @@ CustomValidation.prototype = {
 
 function checkInput(input) {
 	if ( input.CustomValidation ) {
-
-		input.CustomValidation.invalidities = [];
 		input.CustomValidation.checkValidity(input);
 
 		if ( input.CustomValidation.invalidities.length == 0 && input.value != '' ) {
@@ -106,6 +126,5 @@ function checkInput(input) {
 			var message = input.CustomValidation.getInvalidities();
 			input.setCustomValidity(message);
 		}
-
-	}	
+	}
 }

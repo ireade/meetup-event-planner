@@ -24,6 +24,7 @@
 				<label for="full_name">
 					<span>What's your <em>full name</em>? *</span>
 					<input type="text" id="full_name" required autofocus autocomplete="name" name="name">
+					<ul class="input-requirements"></ul>
 				</label>
 			</div>
 
@@ -31,6 +32,7 @@
 				<label for="email">
 					<span>What's your <em>email address</em>? *</span>
 					<input type="email" id="email" placeholder="e.g. you@example.com" required autocomplete="email" name="email">
+					<ul class="input-requirements"></ul>
 				</label>
 			</div>
 
@@ -38,7 +40,6 @@
 				<label for="password">
 					<span>Create a secure <em>password</em> *</span>
 					<input type="password" id="password" minlength="8" maxlength="100" required>
-
 					<ul class="input-requirements">
 						<li>Between 8 and 100 characters</li>
 						<li>At least one number</li>
@@ -52,6 +53,7 @@
 				<label for="password_repeat">
 					<span><em>Repeat</em> your password *</span>
 					<input type="password" id="password_repeat" minlength="8" maxlength="100" required>
+					<ul class="input-requirements"></ul>
 				</label>
 			</div>
 		</div>
