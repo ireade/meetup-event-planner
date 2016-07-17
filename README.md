@@ -2,6 +2,8 @@
 
 Project #1 for the [Udacity Senior Web Developer Nanodegree](https://www.udacity.com/course/senior-web-developer-nanodegree--nd802)
 
+Passed on 17 June 2016
+
 ## Requirements
 
 You do not need to create a functioning back-end or save user information. Only the form components themselves and their performance will be evaluated.
